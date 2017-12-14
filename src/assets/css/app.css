@@ -1,0 +1,326 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0}
+a {
+	cursor: pointer;
+}
+
+strong {
+	font-weight: 700;
+} 
+
+
+/*** COLOR PALETTE ***/
+:root {
+	--silver:#ededed;
+	--blue: #0ad4fa;
+	--red: #f54370;
+  --text-silver-dark: #616161;
+  --text-silver-clear: #A3A3A3;  
+  --border: #D9D9D9; 
+}
+
+
+/*** BODY ***/
+body {
+	font-family: 'Source Sans Pro', sans-serif;	
+	font-weight: 400;
+  font-style: normal;
+	color: var(--text-silver-dark);
+	font-size: 18px;
+	line-height: 1.3;	
+	letter-spacing:-0.04px;
+	background:#f9f9f9;	
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;	
+
+	/* When a popup is displayed */
+	&.bodyOff {
+		overflow: hidden;
+   	pointer-events: none;
+		cursor: default;	   
+		 
+		& > .Bodymask {
+			width: 100%;
+			height: 100%;
+			opacity: .8;									
+		}
+
+		& .blur {
+			filter: blur(5px);						
+		}
+
+		header {
+			transform: translateY(-110%);
+		}		
+
+		.wrapper {
+			padding-top: 0;
+		}
+	}
+
+}
+
+
+/***  TEXTS ELEMENTS ***/
+p {
+	color: var(--text-silver-clear);
+}
+
+h1, h2, h3, h4 {
+	color: var(--text-silver-dark);
+}
+
+h1 {
+	font-size:64px;
+	font-weight: 700;
+}
+
+h3 {
+	font-size: 20px;
+}
+
+
+/***  GENERAL CONTAINERS ***/
+.wrapper {
+	padding-top: 80px;
+	transition: padding .5s ease; 
+}	
+
+.container {
+	max-width: 1176px;
+	padding: 0 3rem;
+	margin: 0 auto;	
+	transition: filter .3s;	
+}
+
+
+
+/***  BUTTONS ***/
+.btn {
+	align-self:center;      
+	display: inline-block;
+	font-size: 24px;      
+	border-radius:100px;            
+	text-align: center;
+	white-space: nowrap;      
+	background: var(--silver);
+	
+	&.sort {
+		font-size:24px;
+		padding: 10px 22px;
+		color: var(--text-silver-clear);
+		
+		&.active {
+			color: #fff;
+			background: var(--blue);
+			}		
+	}
+
+	&.redeem {
+		font-size:18px;
+		padding: 12px 22%;
+		color: var(--text-silver-dark);
+	}
+
+	&.small {		  
+		font-size: 16px;
+		padding: 10px 25px;			
+		margin-top: 32px;
+	}
+
+	&.blue {
+			background: #43c9f5;
+		color: #fff;
+	}
+}
+	
+
+/*** BODY MASK FOR POPUP ***/
+.Bodymask {		
+	z-index: 9;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+	background-color:#021b23;
+	opacity: 0;
+	overflow: hidden;
+	position: fixed;
+	pointer-events: none;
+	transition: opacity .3s;				
+}
+
+
+/** PAGINATE LINKS **/
+ul.paginate-links {
+	
+	li {
+		display: flex;
+		justify-content: flex-end;
+
+		a {
+			background-repeat: no-repeat;
+			width:48px;
+			height: 48px;
+			display: inline-block;
+			background-color: #D9D9D9;
+			transition: background-color 1.2s ease, transform .3s cubic-bezier(.215,.61,.355,1);
+
+			&:hover {					
+				transform: translateY(-2px);
+				background-color: #aaa;					
+			}
+
+		}
+
+		&.prev {
+			a {			
+				mask: url(../img/icons/arrow-left.svg) no-repeat 50% 50%;
+				-webkit-mask:  url(../img/icons/arrow-left.svg) no-repeat 50% 50%;  
+			}
+		}
+
+		&.next {
+			a {
+				mask: url(../img/icons/arrow-right.svg) no-repeat 50% 50%;
+				-webkit-mask:  url(../img/icons/arrow-right.svg) no-repeat 50% 50%;    										
+				margin-left:12px;				
+			}
+		}
+		
+		&.disabled {
+			pointer-events: none;
+			opacity: 0.5;
+		}
+	}
+}
+	
+
+
+/** WEEPING PIG **/
+#nose, #nostrils {
+  animation: nose 3.5s ease infinite;
+}
+
+#stream_r {
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: stream_r 5s linear forwards;
+}
+
+#stream_l {
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: stream_l 5s linear forwards;
+}
+
+#tear_r {
+  animation: tear_r 1.7s linear infinite;   
+  animation-delay: 2.2s;
+  opacity:0;
+}
+
+#tear_l {
+  animation: tear_l 1.9s linear infinite;   
+  animation-delay: 2.2s;
+  opacity:0;
+}
+
+
+#eyes {
+  animation: eyes 4.5s linear infinite;
+}
+
+@keyframes tear_r {
+  0% {
+    transform: translate(0,-16px);
+    opacity:0;
+    }
+  20% {
+     opacity:1;
+     }
+  60%{transform: translate(0,5px);}    
+  100%{
+    transform: translate(0,100px);
+    opacity:.2;
+  }    
+}
+
+@keyframes tear_l {
+  0% {
+    transform: translate(0,-5px);
+    opacity:0;
+    }
+  20% {
+     opacity:1;
+     }
+  60%{transform: translate(0,6px);}    
+  100%{
+    transform: translate(0,100px);
+    opacity:.2;
+  }    
+}
+
+
+@keyframes eyes {
+  97% {fill: #556080;}
+  98% {fill: #F9C7DB;}
+  100% {fill: #556080;}
+}
+
+
+@keyframes nose {
+  0%{transform: translate(0,0);}
+  70%{transform: translate(0,0);}    
+  80%{transform: translate(0,5px);}
+  100%{transform: translate(0,0);}    
+}
+
+@keyframes stream_r {
+  to {stroke-dashoffset: 0;}
+}
+
+@keyframes stream_l {
+  to {stroke-dashoffset: 0;}
+}
+
