@@ -12,3 +12,9 @@ PostCSS
 trying to follow their recommendations, I send a big hug, and sorry for my English!
 
 Santiago Martini
+
+
+Run app
+--------------
+$ npm install
+$ npm run dev
